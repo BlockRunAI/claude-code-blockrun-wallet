@@ -65,17 +65,16 @@ We don't replace Claude. We give Claude a wallet and let it buy what it needs.
 
 **This is for people who believe AI agents should have their own wallets.**
 
-You understand stablecoins (USDC). You're comfortable funding an agent with $1-5 to let it work autonomously. You want Claude to call GPT, Grok, DALL-E without you managing API keys.
+You fund the agent with $1-5 USDC. The agent pays for GPT, Grok, DALL-E autonomously. No API keys. No human approval needed for each call.
 
 | You Are... | You Want... | Start Here |
 |------------|-------------|------------|
 | **Developer** | Call GPT/Grok from Claude Code | [Quickstart](BULLETPROOF_QUICKSTART.md) |
-| **AI Power User** | Real-time X data in Claude | [Quickstart](BULLETPROOF_QUICKSTART.md) |
+| **AI Power User** | Real-time X data, images | [Quickstart](BULLETPROOF_QUICKSTART.md) |
 | **Cost-Conscious** | 90% cheaper AI calls | [Cost Guide](#the-numbers) |
-| **New to Crypto** | Learn how to get USDC | [USDC Guide](USDC_ON_BASE.md) |
 | **MCP Enthusiast** | Prefer MCP over Skills | [MCP Server](#alternative-mcp-server) |
 
-**New here?** Start with the [Bulletproof Quickstart](BULLETPROOF_QUICKSTART.md) — can't fail.
+**New to crypto?** [USDC Guide](USDC_ON_BASE.md) explains how to get USDC on Base (5 min setup).
 
 ---
 
