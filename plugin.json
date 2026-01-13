@@ -2,7 +2,10 @@
   "name": "blockrun",
   "version": "1.0.0",
   "description": "Give Claude a wallet to access capabilities it lacks - image generation, real-time X/Twitter data, and 30+ AI models via micropayments",
-  "author": "BlockRun <care@blockrun.ai>",
+  "author": {
+    "name": "BlockRun",
+    "email": "care@blockrun.ai"
+  },
   "homepage": "https://blockrun.ai",
   "repository": "https://github.com/BlockRunAI/blockrun-claude-code-wallet",
   "license": "MIT",
@@ -16,8 +19,5 @@
     "x402",
     "micropayments",
     "ai-routing"
-  ],
-  "skills": [
-    "skills/blockrun"
   ]
 }
