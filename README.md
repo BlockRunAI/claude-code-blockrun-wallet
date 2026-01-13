@@ -69,10 +69,11 @@ You understand stablecoins (USDC). You're comfortable funding an agent with $1-5
 
 | You Are... | You Want... | Start Here |
 |------------|-------------|------------|
-| **Crypto-Native Developer** | Agent that pays for its own capabilities | [Quickstart](BULLETPROOF_QUICKSTART.md) |
-| **AI Power User** | Real-time X data, images in Claude | [Quickstart](BULLETPROOF_QUICKSTART.md) |
+| **Developer** | Call GPT/Grok from Claude Code | [Quickstart](BULLETPROOF_QUICKSTART.md) |
+| **AI Power User** | Real-time X data in Claude | [Quickstart](BULLETPROOF_QUICKSTART.md) |
 | **Cost-Conscious** | 90% cheaper AI calls | [Cost Guide](#the-numbers) |
-| **x402 Enthusiast** | Micropayments for AI | [USDC Guide](USDC_ON_BASE.md) |
+| **New to Crypto** | Learn how to get USDC | [USDC Guide](USDC_ON_BASE.md) |
+| **MCP Enthusiast** | Prefer MCP over Skills | [MCP Server](#alternative-mcp-server) |
 
 **New here?** Start with the [Bulletproof Quickstart](BULLETPROOF_QUICKSTART.md) — can't fail.
 
