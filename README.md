@@ -82,7 +82,7 @@ You fund the agent with $1-5 USDC. The agent pays for GPT, Grok, DALL-E autonomo
 
 **For Claude Code (recommended):**
 ```bash
-/plugin install github:BlockRunAI/claude-code-blockrun-wallet
+/plugin install github:BlockRunAI/blockrun-claude-code-wallet
 ```
 
 **Update to latest version:**

@@ -150,5 +150,5 @@ python ~/.blockrun/scripts/run.py --check-update
 Or update directly:
 
 ```bash
-/plugin update claude-code-blockrun-wallet
+/plugin update blockrun-claude-code-wallet
 ```

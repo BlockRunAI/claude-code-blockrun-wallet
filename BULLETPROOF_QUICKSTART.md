@@ -8,7 +8,7 @@
 
 **For Claude Code:**
 ```bash
-/plugin install github:BlockRunAI/claude-code-blockrun-wallet
+/plugin install github:BlockRunAI/blockrun-claude-code-wallet
 pip install blockrun-llm
 ```
 
