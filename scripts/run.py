@@ -410,12 +410,23 @@ def cmd_check_update():
         elif remote_version > __version__:
             branding.print_info(f"Update available: v{__version__} → v{remote_version}")
             print("\n  To update, run:")
-            print("    /plugin update blockrun\n")
+            print("    /plugin update blockrun-claude-code-wallet\n")
         else:
             branding.print_info(f"Local: v{__version__}, Remote: v{remote_version}")
 
         return 0
 
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            # Repo may be private or not yet public
+            branding.print_info(f"Current version: v{__version__}")
+            print("\n  To update, run:")
+            print("    /plugin update blockrun-claude-code-wallet")
+            print("\n  Or update the SDK:")
+            print("    pip install --upgrade blockrun-llm\n")
+            return 0
+        branding.print_error(f"Could not check for updates: HTTP {e.code}")
+        return 1
     except urllib.error.URLError as e:
         branding.print_error(f"Could not check for updates: {e.reason}")
         return 1
