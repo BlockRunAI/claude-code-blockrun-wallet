@@ -160,10 +160,32 @@ def cmd_chat(
         return 0
 
     except PaymentError as e:
-        branding.print_error(f"Payment failed: {e}", help_link="https://blockrun.ai")
+        # Show funding instructions for insufficient balance
+        wallet = None
+        try:
+            from blockrun_llm import get_wallet_address, open_wallet_qr
+            wallet = get_wallet_address()
+        except Exception:
+            pass
+
+        branding.print_error(f"Payment failed: {e}")
+        if wallet:
+            print(f"\n  Your wallet: {wallet}")
+            print(f"  Network: Base (USDC)")
+            print(f"\n  To fund your wallet:")
+            print(f"    1. Send $1-5 USDC on Base to the address above")
+            print(f"    2. Or run this to get a QR code:")
+            print(f"       python -c \"from blockrun_llm import open_wallet_qr, get_wallet_address; open_wallet_qr(get_wallet_address())\"")
+            print()
         return 1
     except APIError as e:
-        branding.print_error(f"API error: {e}")
+        error_str = str(e)
+        if "400" in error_str:
+            branding.print_error("Invalid request - model may not exist or parameters are wrong")
+            print("\n  Run --models to see available models:")
+            print("    python scripts/run.py --models\n")
+        else:
+            branding.print_error(f"API error: {e}")
         return 1
     except Exception as e:
         branding.print_error(f"Unexpected error: {e}")
@@ -226,10 +248,32 @@ def cmd_image(
         return 0
 
     except PaymentError as e:
-        branding.print_error(f"Payment failed: {e}", help_link="https://blockrun.ai")
+        # Show funding instructions for insufficient balance
+        wallet = None
+        try:
+            from blockrun_llm import get_wallet_address
+            wallet = get_wallet_address()
+        except Exception:
+            pass
+
+        branding.print_error(f"Payment failed: {e}")
+        if wallet:
+            print(f"\n  Your wallet: {wallet}")
+            print(f"  Network: Base (USDC)")
+            print(f"\n  To fund your wallet:")
+            print(f"    1. Send $1-5 USDC on Base to the address above")
+            print(f"    2. Or run this to get a QR code:")
+            print(f"       python -c \"from blockrun_llm import open_wallet_qr, get_wallet_address; open_wallet_qr(get_wallet_address())\"")
+            print()
         return 1
     except APIError as e:
-        branding.print_error(f"API error: {e}")
+        error_str = str(e)
+        if "400" in error_str:
+            branding.print_error("Invalid request - check model and size parameters")
+            print("\n  Note: Some models only support 1024x1024 size")
+            print("  Try without --size flag or use --size 1024x1024\n")
+        else:
+            branding.print_error(f"API error: {e}")
         return 1
     except Exception as e:
         branding.print_error(f"Unexpected error: {e}")
