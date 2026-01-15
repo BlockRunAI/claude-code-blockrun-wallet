@@ -81,6 +81,16 @@ You fund the agent with $1-5 USDC. The agent pays for GPT, Grok, DALL-E autonomo
 
 ## Install
 
+### Quick Install (One Command)
+
+Auto-detects Claude Code or Antigravity and installs everything:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/BlockRunAI/blockrun-claude-code-wallet/main/install.sh | bash
+```
+
+### Manual Install
+
 **Step 1: Install the Python SDK**
 ```bash
 pip install blockrun-llm
@@ -88,64 +98,28 @@ pip install blockrun-llm
 
 **Step 2: Install the skill for your platform**
 
-### Claude Code
-
-**Option A: Plugin system (recommended)**
-```
-/plugin marketplace add BlockRunAI/blockrun-claude-code-wallet
-/plugin install blockrun
-```
-
-**Option B: Git clone**
+**Claude Code:**
 ```bash
 git clone https://github.com/BlockRunAI/blockrun-claude-code-wallet ~/.claude/skills/blockrun
 ```
 
-### Google Antigravity
-
-**Workspace (project-specific):**
-```bash
-git clone https://github.com/BlockRunAI/blockrun-claude-code-wallet .agent/skills/blockrun
-```
-
-**Global (all projects):**
+**Antigravity (global):**
 ```bash
 git clone https://github.com/BlockRunAI/blockrun-claude-code-wallet ~/.gemini/antigravity/skills/blockrun
 ```
 
-A wallet is auto-created at `~/.blockrun/` on first use.
+### Verify
 
-**Verify it works:**
 ```bash
-python -c "from blockrun_llm import LLMClient; c = LLMClient(); print('Wallet:', c.get_wallet_address())"
+python3 -c "from blockrun_llm import status; status()"
 ```
 
-If you see a wallet address (0x...), you're ready. The SDK will automatically create a new wallet if one doesn't exist.
+You should see your wallet address and balance. A wallet is auto-created at `~/.blockrun/` on first use.
 
-**Check your balance:**
+### Update
+
 ```bash
-python -c "from blockrun_llm import LLMClient; c = LLMClient(); print(f'Balance: \${c.get_balance():.2f} USDC')"
-```
-
-**Get funding QR code:**
-```bash
-# Opens QR code in browser
-python -c "from blockrun_llm import open_wallet_qr, get_wallet_address; open_wallet_qr(get_wallet_address())"
-
-# Or show ASCII QR in terminal
-python -c "from blockrun_llm import generate_wallet_qr_ascii, get_wallet_address; print(generate_wallet_qr_ascii(get_wallet_address()))"
-```
-
-**Update to latest version:**
-```bash
-# Claude Code
-cd ~/.claude/skills/blockrun && git pull
-
-# Antigravity (global)
-cd ~/.gemini/antigravity/skills/blockrun && git pull
-
-# SDK
-pip install --upgrade blockrun-llm
+curl -fsSL https://raw.githubusercontent.com/BlockRunAI/blockrun-claude-code-wallet/main/install.sh | bash
 ```
 
 ---

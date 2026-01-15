@@ -4,62 +4,26 @@
 
 ---
 
-## Step 1: Install (30 seconds)
+## Step 1: Install (One Command)
 
 ```bash
-# Install Python SDK
-pip install blockrun-llm
+curl -fsSL https://raw.githubusercontent.com/BlockRunAI/blockrun-claude-code-wallet/main/install.sh | bash
 ```
 
-**Install the skill for your platform:**
+This auto-detects Claude Code or Antigravity and installs everything.
 
-### Claude Code
-
-**Option A: Plugin system (recommended)**
-```
-/plugin marketplace add BlockRunAI/blockrun-claude-code-wallet
-/plugin install blockrun
-```
-
-**Option B: Git clone**
+**Verify:**
 ```bash
-git clone https://github.com/BlockRunAI/blockrun-claude-code-wallet ~/.claude/skills/blockrun
+python3 -c "from blockrun_llm import status; status()"
 ```
 
-### Google Antigravity
-
-**Workspace:**
-```bash
-git clone https://github.com/BlockRunAI/blockrun-claude-code-wallet .agent/skills/blockrun
-```
-
-**Global:**
-```bash
-git clone https://github.com/BlockRunAI/blockrun-claude-code-wallet ~/.gemini/antigravity/skills/blockrun
-```
-
-**Verify it worked:**
-```bash
-python -c "from blockrun_llm import LLMClient; c = LLMClient(); print('Wallet:', c.get_wallet_address())"
-```
-
-See a wallet address (0x...)? You're good. A new wallet is auto-created if one doesn't exist.
+You should see your wallet address and balance.
 
 ---
 
 ## Step 2: Fund Your Wallet (one-time)
 
-**Get your wallet address:**
-```bash
-python -c "from blockrun_llm import get_wallet_address; print(get_wallet_address())"
-```
-
-**Check your balance:**
-```bash
-python -c "from blockrun_llm import LLMClient; c = LLMClient(); print(f'Balance: \${c.get_balance():.2f} USDC')"
-```
-
-Copy your wallet address. Send **$1-5 USDC on Base network** to it.
+Copy your wallet address from Step 1. Send **$1-5 USDC on Base network** to it.
 
 ### What $1 Gets You
 
@@ -74,21 +38,21 @@ Copy your wallet address. Send **$1-5 USDC on Base network** to it.
 
 ### How to Get USDC on Base
 
-**Already have USDC on Base?** Send to your wallet address above. Done.
+**Already have USDC on Base?** Send to your wallet address. Done.
 
 **New to crypto?** (5 minutes, one-time):
 1. Download [Coinbase](https://coinbase.com) app
 2. Buy $5 USDC (debit card works)
-3. Send to your wallet address above
+3. Send to your wallet address
 4. Select **Base network** when sending
 
 > **Step-by-step with screenshots:** [USDC_ON_BASE.md](USDC_ON_BASE.md)
 
 ---
 
-## Step 3: Use It (Immediate)
+## Step 3: Use It
 
-Open Claude Code and say:
+Open Claude Code or Antigravity and say:
 
 ```
 "blockrun generate an image of a sunset over mountains"
@@ -96,7 +60,7 @@ Open Claude Code and say:
 
 Claude will call DALL-E and save the image.
 
-> **Tip:** Forgot the keyword? Just ask for what you need — Claude will suggest BlockRun when it can't do something itself.
+> **Tip:** Just ask for what you need — Claude will suggest BlockRun when it can't do something itself.
 
 ---
 
@@ -118,32 +82,20 @@ Claude will call DALL-E and save the image.
 
 ## Troubleshooting
 
-### "Insufficient balance"
-
-Check your balance and fund your wallet:
+### Check status
 ```bash
-python -c "from blockrun_llm import LLMClient; c = LLMClient(); print(f'Balance: \${c.get_balance():.2f} USDC')"
+python3 -c "from blockrun_llm import status; status()"
 ```
 
-### "Wallet not found" or "Private key required"
-
-The SDK now auto-creates a wallet on first use. Just run:
+### "ModuleNotFoundError"
+Run the install script again:
 ```bash
-python -c "from blockrun_llm import LLMClient; c = LLMClient(); print('Wallet:', c.get_wallet_address())"
+curl -fsSL https://raw.githubusercontent.com/BlockRunAI/blockrun-claude-code-wallet/main/install.sh | bash
 ```
 
-### "Command not found" or "ModuleNotFoundError"
-
-Make sure you installed the SDK:
+### QR code for funding
 ```bash
-pip install blockrun-llm
-```
-
-### QR code not showing
-
-Use the ASCII QR code for terminal:
-```bash
-python -c "from blockrun_llm import generate_wallet_qr_ascii, get_wallet_address; print(generate_wallet_qr_ascii(get_wallet_address()))"
+python3 -c "from blockrun_llm import generate_wallet_qr_ascii, get_wallet_address; print(generate_wallet_qr_ascii(get_wallet_address()))"
 ```
 
 ---
