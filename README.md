@@ -80,6 +80,9 @@ You fund the agent with $1-5 USDC. The agent pays for GPT, Grok, DALL-E autonomo
 
 ## Install
 
+> **Note:** Claude Code does not support `/plugin install github:` syntax.
+> You must install using `git clone` as shown below.
+
 **Step 1: Install the Python SDK**
 ```bash
 pip install blockrun-llm

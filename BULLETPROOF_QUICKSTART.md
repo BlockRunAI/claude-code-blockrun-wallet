@@ -6,6 +6,9 @@
 
 ## Step 1: Install (30 seconds)
 
+> **Note:** Claude Code does not support `/plugin install github:` syntax.
+> You must use the commands below.
+
 ```bash
 # Install Python SDK
 pip install blockrun-llm
