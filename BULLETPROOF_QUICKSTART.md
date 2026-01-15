@@ -9,21 +9,8 @@
 ```bash
 # Install Python SDK
 pip install blockrun-llm
-```
 
-**Install the Claude Code skill (choose one):**
-
-**Option A: Using `/plugin install`**
-```bash
-# First, add the marketplace (one-time setup)
-/plugin marketplace add anthropics/claude-code
-
-# Then install the skill
-/plugin install github:BlockRunAI/blockrun-claude-code-wallet
-```
-
-**Option B: Using git clone**
-```bash
+# Install Claude Code skill
 git clone https://github.com/BlockRunAI/blockrun-claude-code-wallet ~/.claude/skills/blockrun
 ```
 
