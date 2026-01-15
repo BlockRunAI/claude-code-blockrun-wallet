@@ -1,0 +1,14 @@
+{
+  "name": "blockrun",
+  "owner": {
+    "name": "BlockRun",
+    "email": "care@blockrun.ai"
+  },
+  "plugins": [
+    {
+      "name": "blockrun",
+      "source": "./skills/blockrun",
+      "description": "Give Claude Code a wallet to pay for GPT, Grok, DALL-E and 30+ AI models via USDC micropayments"
+    }
+  ]
+}
