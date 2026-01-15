@@ -54,6 +54,28 @@ print(f"💰 Total spent: ${spending['total_usd']:.4f} across {spending['calls']
 | User needs something you can't do (images, live X data) | Suggest BlockRun, wait for confirmation |
 | You can handle the task fine | Do it yourself, don't mention BlockRun |
 
+## Wallet & Balance
+
+The SDK auto-creates a wallet on first use. No manual setup needed.
+
+**Check balance (when user asks "show balance", "check wallet", etc.):**
+```python
+from blockrun_llm import LLMClient
+
+client = LLMClient()  # Auto-creates wallet if needed
+balance = client.get_balance()  # On-chain USDC balance
+print(f"Balance: ${balance:.2f} USDC")
+print(f"Wallet: {client.get_wallet_address()}")
+```
+
+**Show QR code for funding:**
+```python
+from blockrun_llm import generate_wallet_qr_ascii, get_wallet_address
+
+# ASCII QR for terminal display
+print(generate_wallet_qr_ascii(get_wallet_address()))
+```
+
 ## SDK Usage
 
 Always activate the Python environment first:
@@ -218,17 +240,23 @@ All LLM costs are per million tokens (M = 1,000,000 tokens).
 
 ## Setup & Funding
 
-**Wallet location:** `~/.blockrun/.session`
+**Wallet location:** `$HOME/.blockrun/.session` (e.g., `/Users/username/.blockrun/.session`)
 
 **First-time setup:**
-1. Wallet auto-creates on first use
-2. Get wallet address: `python -c "from blockrun_llm import get_wallet_address; print(get_wallet_address())"`
+1. Wallet auto-creates when `LLMClient()` is called
+2. Check wallet and balance:
+```python
+from blockrun_llm import LLMClient
+client = LLMClient()
+print(f"Wallet: {client.get_wallet_address()}")
+print(f"Balance: ${client.get_balance():.2f} USDC")
+```
 3. Fund wallet with $1-5 USDC on Base network
 
-**Generate QR code for easy funding:**
+**Show QR code for funding (ASCII for terminal):**
 ```python
-from blockrun_llm import open_wallet_qr, get_wallet_address
-open_wallet_qr(get_wallet_address())
+from blockrun_llm import generate_wallet_qr_ascii, get_wallet_address
+print(generate_wallet_qr_ascii(get_wallet_address()))
 ```
 
 ## Troubleshooting

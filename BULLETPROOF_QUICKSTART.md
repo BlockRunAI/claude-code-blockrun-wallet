@@ -19,7 +19,7 @@ git clone https://github.com/BlockRunAI/blockrun-claude-code-wallet ~/.claude/sk
 python -c "from blockrun_llm import LLMClient; c = LLMClient(); print('Wallet:', c.get_wallet_address())"
 ```
 
-See a wallet address (0x...)? You're good. Move to step 2.
+See a wallet address (0x...)? You're good. A new wallet is auto-created if one doesn't exist.
 
 ---
 
@@ -27,10 +27,15 @@ See a wallet address (0x...)? You're good. Move to step 2.
 
 **Get your wallet address:**
 ```bash
-python -c "from blockrun_llm import LLMClient; c = LLMClient(); print(c.get_wallet_address())"
+python -c "from blockrun_llm import get_wallet_address; print(get_wallet_address())"
 ```
 
-Copy this address. Send **$1-5 USDC on Base network** to it.
+**Check your balance:**
+```bash
+python -c "from blockrun_llm import LLMClient; c = LLMClient(); print(f'Balance: \${c.get_balance():.2f} USDC')"
+```
+
+Copy your wallet address. Send **$1-5 USDC on Base network** to it.
 
 ### What $1 Gets You
 
@@ -91,23 +96,30 @@ Claude will call DALL-E and save the image.
 
 ### "Insufficient balance"
 
-Send more USDC to your wallet. Check balance:
+Check your balance and fund your wallet:
 ```bash
-python ~/.blockrun/scripts/run.py --balance
+python -c "from blockrun_llm import LLMClient; c = LLMClient(); print(f'Balance: \${c.get_balance():.2f} USDC')"
 ```
 
-### "Wallet not found"
+### "Wallet not found" or "Private key required"
 
-Run any command once - wallet auto-creates:
+The SDK now auto-creates a wallet on first use. Just run:
 ```bash
-python ~/.blockrun/scripts/run.py --models
+python -c "from blockrun_llm import LLMClient; c = LLMClient(); print('Wallet:', c.get_wallet_address())"
 ```
 
-### "Command not found"
+### "Command not found" or "ModuleNotFoundError"
 
-Make sure you installed:
+Make sure you installed the SDK:
 ```bash
 pip install blockrun-llm
+```
+
+### QR code not showing
+
+Use the ASCII QR code for terminal:
+```bash
+python -c "from blockrun_llm import generate_wallet_qr_ascii, get_wallet_address; print(generate_wallet_qr_ascii(get_wallet_address()))"
 ```
 
 ---

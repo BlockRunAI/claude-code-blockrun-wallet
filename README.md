@@ -98,11 +98,20 @@ A wallet is auto-created at `~/.blockrun/` on first use.
 python -c "from blockrun_llm import LLMClient; c = LLMClient(); print('Wallet:', c.get_wallet_address())"
 ```
 
-If you see a wallet address (0x...), you're ready.
+If you see a wallet address (0x...), you're ready. The SDK will automatically create a new wallet if one doesn't exist.
+
+**Check your balance:**
+```bash
+python -c "from blockrun_llm import LLMClient; c = LLMClient(); print(f'Balance: \${c.get_balance():.2f} USDC')"
+```
 
 **Get funding QR code:**
 ```bash
+# Opens QR code in browser
 python -c "from blockrun_llm import open_wallet_qr, get_wallet_address; open_wallet_qr(get_wallet_address())"
+
+# Or show ASCII QR in terminal
+python -c "from blockrun_llm import generate_wallet_qr_ascii, get_wallet_address; print(generate_wallet_qr_ascii(get_wallet_address()))"
 ```
 
 **Update to latest version:**
