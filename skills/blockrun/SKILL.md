@@ -96,10 +96,7 @@ print(generate_wallet_qr_ascii(get_wallet_address()))
 
 ## SDK Usage
 
-Always activate the Python environment first:
-```bash
-source /Users/vickyfu/myenv_py313/bin/activate
-```
+**Prerequisite:** Install the SDK with `pip install blockrun-llm`
 
 ### Basic Chat
 ```python
@@ -286,10 +283,7 @@ response = client.chat("xai/grok-3", "What's trending?", search=True)
 ```
 
 **Module not found**
-→ Activate the Python environment first:
-```bash
-source /Users/vickyfu/myenv_py313/bin/activate
-```
+→ Install the SDK: `pip install blockrun-llm`
 
 ## Updates
 

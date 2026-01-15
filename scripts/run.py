@@ -28,7 +28,7 @@ from typing import Optional
 
 # Plugin version (keep in sync with plugin.json)
 __version__ = "1.0.0"
-GITHUB_PLUGIN_URL = "https://raw.githubusercontent.com/BlockRunAI/blockrun-claude-code-wallet/main/plugin.json"
+GITHUB_PLUGIN_URL = "https://raw.githubusercontent.com/BlockRunAI/blockrun-agent-wallet/main/plugin.json"
 
 # Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -562,7 +562,7 @@ def cmd_check_update():
         elif remote_version > __version__:
             branding.print_info(f"Update available: v{__version__} → v{remote_version}")
             print("\n  To update, run:")
-            print("    /plugin update blockrun-claude-code-wallet\n")
+            print("    /plugin update blockrun-agent-wallet\n")
         else:
             branding.print_info(f"Local: v{__version__}, Remote: v{remote_version}")
 
@@ -573,7 +573,7 @@ def cmd_check_update():
             # Repo may be private or not yet public
             branding.print_info(f"Current version: v{__version__}")
             print("\n  To update, run:")
-            print("    /plugin update blockrun-claude-code-wallet")
+            print("    /plugin update blockrun-agent-wallet")
             print("\n  Or update the SDK:")
             print("    pip install --upgrade blockrun-llm\n")
             return 0
@@ -634,7 +634,7 @@ def cmd_clear_budget():
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
-        prog="blockrun-claude-code-wallet",
+        prog="blockrun-agent-wallet",
         description="BlockRun Claude Code Wallet - Access unlimited LLMs via USDC micropayments",
         epilog="""
 Examples:

@@ -24,7 +24,7 @@ fi
 if [ ! -d "$SKILLS_DIR" ]; then
     echo "Cloning skill..."
     mkdir -p "$(dirname "$SKILLS_DIR")"
-    git clone --depth 1 https://github.com/BlockRunAI/blockrun-claude-code-wallet "$SKILLS_DIR"
+    git clone --depth 1 https://github.com/BlockRunAI/blockrun-agent-wallet "$SKILLS_DIR"
 else
     echo "Updating skill..."
     cd "$SKILLS_DIR" && git pull --ff-only

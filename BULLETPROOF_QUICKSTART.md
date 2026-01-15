@@ -7,7 +7,7 @@
 ## Step 1: Install (One Command)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/BlockRunAI/blockrun-claude-code-wallet/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/BlockRunAI/blockrun-agent-wallet/main/install.sh | bash
 ```
 
 This auto-detects Claude Code or Antigravity and installs everything.
@@ -90,7 +90,7 @@ python3 -c "from blockrun_llm import status; status()"
 ### "ModuleNotFoundError"
 Run the install script again:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/BlockRunAI/blockrun-claude-code-wallet/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/BlockRunAI/blockrun-agent-wallet/main/install.sh | bash
 ```
 
 ### QR code for funding

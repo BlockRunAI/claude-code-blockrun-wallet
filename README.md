@@ -86,7 +86,7 @@ You fund the agent with $1-5 USDC. The agent pays for GPT, Grok, DALL-E autonomo
 Auto-detects Claude Code or Antigravity and installs everything:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/BlockRunAI/blockrun-claude-code-wallet/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/BlockRunAI/blockrun-agent-wallet/main/install.sh | bash
 ```
 
 ### Manual Install
@@ -100,12 +100,12 @@ pip install blockrun-llm
 
 **Claude Code:**
 ```bash
-git clone https://github.com/BlockRunAI/blockrun-claude-code-wallet ~/.claude/skills/blockrun
+git clone https://github.com/BlockRunAI/blockrun-agent-wallet ~/.claude/skills/blockrun
 ```
 
 **Antigravity (global):**
 ```bash
-git clone https://github.com/BlockRunAI/blockrun-claude-code-wallet ~/.gemini/antigravity/skills/blockrun
+git clone https://github.com/BlockRunAI/blockrun-agent-wallet ~/.gemini/antigravity/skills/blockrun
 ```
 
 ### Verify
@@ -119,7 +119,7 @@ You should see your wallet address and balance. A wallet is auto-created at `~/.
 ### Update
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/BlockRunAI/blockrun-claude-code-wallet/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/BlockRunAI/blockrun-agent-wallet/main/install.sh | bash
 ```
 
 ---

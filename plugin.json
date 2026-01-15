@@ -7,7 +7,7 @@
     "email": "care@blockrun.ai"
   },
   "homepage": "https://blockrun.ai",
-  "repository": "https://github.com/BlockRunAI/blockrun-claude-code-wallet",
+  "repository": "https://github.com/BlockRunAI/blockrun-agent-wallet",
   "license": "MIT",
   "keywords": [
     "blockrun",
