@@ -54,6 +54,20 @@ print(f"💰 Total spent: ${spending['total_usd']:.4f} across {spending['calls']
 | User needs something you can't do (images, live X data) | Suggest BlockRun, wait for confirmation |
 | You can handle the task fine | Do it yourself, don't mention BlockRun |
 
+## Example User Prompts
+
+Users will say things like:
+
+| User Says | What You Do |
+|-----------|-------------|
+| "blockrun generate an image of a sunset" | Call DALL-E via ImageClient |
+| "use grok to check what's trending on X" | Call Grok with `search=True` |
+| "blockrun GPT review this code" | Call GPT-5.2 via LLMClient |
+| "what's the latest news about AI agents?" | Suggest Grok (you lack real-time data) |
+| "generate a logo for my startup" | Suggest DALL-E (you can't generate images) |
+| "blockrun check my balance" | Show wallet balance via `get_balance()` |
+| "blockrun deepseek summarize this file" | Call DeepSeek for cost savings |
+
 ## Wallet & Balance
 
 The SDK auto-creates a wallet on first use. No manual setup needed.
