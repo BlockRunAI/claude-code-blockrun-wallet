@@ -28,9 +28,9 @@ You have a wallet. When you need a capability you lack, you pay for it autonomou
 If the user specifies a budget (e.g., "use at most $1"), track spending and stop when budget is reached:
 
 ```python
-from blockrun_llm import LLMClient
+from blockrun_llm import setup_agent_wallet
 
-client = LLMClient()
+client = setup_agent_wallet()
 budget = 1.0  # User's budget
 
 # Before each call, check if within budget
@@ -70,13 +70,17 @@ Users will say things like:
 
 ## Wallet & Balance
 
-The SDK auto-creates a wallet on first use. No manual setup needed.
+Use `setup_agent_wallet()` to auto-create a wallet and get a client. This shows the QR code and welcome message on first use.
+
+**Initialize client (always start with this):**
+```python
+from blockrun_llm import setup_agent_wallet
+
+client = setup_agent_wallet()  # Auto-creates wallet, shows QR if new
+```
 
 **Check balance (when user asks "show balance", "check wallet", etc.):**
 ```python
-from blockrun_llm import LLMClient
-
-client = LLMClient()  # Auto-creates wallet if needed
 balance = client.get_balance()  # On-chain USDC balance
 print(f"Balance: ${balance:.2f} USDC")
 print(f"Wallet: {client.get_wallet_address()}")
@@ -99,9 +103,9 @@ source /Users/vickyfu/myenv_py313/bin/activate
 
 ### Basic Chat
 ```python
-from blockrun_llm import LLMClient
+from blockrun_llm import setup_agent_wallet
 
-client = LLMClient()
+client = setup_agent_wallet()  # Auto-creates wallet if needed
 response = client.chat("openai/gpt-5.2", "What is 2+2?")
 print(response)
 
@@ -115,9 +119,9 @@ print(f"Spent ${spending['total_usd']:.4f}")
 **IMPORTANT:** For real-time X/Twitter data, you MUST enable Live Search with `search=True` or `search_parameters`.
 
 ```python
-from blockrun_llm import LLMClient
+from blockrun_llm import setup_agent_wallet
 
-client = LLMClient()
+client = setup_agent_wallet()
 
 # Simple: Enable live search with search=True
 response = client.chat(
@@ -131,9 +135,9 @@ print(response)
 ### Advanced X Search with Filters
 
 ```python
-from blockrun_llm import LLMClient
+from blockrun_llm import setup_agent_wallet
 
-client = LLMClient()
+client = setup_agent_wallet()
 
 response = client.chat(
     "xai/grok-3",
@@ -257,11 +261,11 @@ All LLM costs are per million tokens (M = 1,000,000 tokens).
 **Wallet location:** `$HOME/.blockrun/.session` (e.g., `/Users/username/.blockrun/.session`)
 
 **First-time setup:**
-1. Wallet auto-creates when `LLMClient()` is called
+1. Wallet auto-creates when `setup_agent_wallet()` is called
 2. Check wallet and balance:
 ```python
-from blockrun_llm import LLMClient
-client = LLMClient()
+from blockrun_llm import setup_agent_wallet
+client = setup_agent_wallet()
 print(f"Wallet: {client.get_wallet_address()}")
 print(f"Balance: ${client.get_balance():.2f} USDC")
 ```
