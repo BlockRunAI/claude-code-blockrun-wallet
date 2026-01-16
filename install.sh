@@ -114,7 +114,12 @@ else:
 
 print()
 print('=' * 50)
+import sys
+sys.stdout.flush()
 PYEOF
+
+# Small delay to ensure terminal renders all text before opening QR
+sleep 0.5
 
 # Open QR code AFTER all text is printed
 if [ -f "$HOME/.blockrun/qr.png" ]; then
