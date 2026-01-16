@@ -53,7 +53,10 @@ fi
 # Verify installation and show status
 echo "Verifying..."
 python3 -c "
+import subprocess
+from pathlib import Path
 from blockrun_llm import setup_agent_wallet
+import qrcode
 
 client = setup_agent_wallet(silent=True)
 addr = client.get_wallet_address()
@@ -66,8 +69,25 @@ print('=' * 50)
 print(f'Wallet: {addr}')
 print(f'Balance: \${bal:.2f} USDC')
 print()
+
 if bal == 0:
+    # Generate and save QR code
+    qr_path = Path.home() / '.blockrun' / 'wallet_qr.png'
+    qr_path.parent.mkdir(parents=True, exist_ok=True)
+    qr = qrcode.make(addr)
+    qr.save(str(qr_path))
+
     print('Fund with USDC on Base to start:')
     print(f'https://basescan.org/address/{addr}')
+    print()
+    print(f'QR code saved: {qr_path}')
+
+    # Open QR code
+    try:
+        subprocess.run(['open', str(qr_path)], check=True)
+        print('QR code opened in viewer.')
+    except:
+        pass
+
 print('=' * 50)
 "
