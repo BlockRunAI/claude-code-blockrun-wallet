@@ -9,7 +9,7 @@ def main():
         print("  balance          Show wallet address and USDC balance")
         print("  generate <prompt> Generate image with DALL-E")
         print("  check @user      Check X/Twitter account with Grok")
-        sys.exit(1)
+        sys.exit(0)  # Not an error, just showing help
 
     cmd = sys.argv[1].lower()
 
