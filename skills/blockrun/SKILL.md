@@ -11,6 +11,35 @@ allowed-tools: Read, Bash(python:*), Bash(python3:*), Bash(pip:*), Bash(source:*
 
 You can't generate images. You have no real-time X/Twitter access. BlockRun gives you these capabilities.
 
+## Output Guidelines
+
+**Keep it clean.** The user wants results, not process.
+
+- **Hide retries** - If an API call fails and you retry, don't show the error. Just retry silently and show the final result.
+- **No stack traces** - If something fails, summarize the error in one sentence. Don't dump tracebacks.
+- **Concise results** - For balance checks: just show wallet address and balance. For X/Twitter: summarize the findings, don't show raw API responses.
+- **Show cost at the end** - After BlockRun operations, show what was spent: `Cost: $0.28`
+
+**Example good output:**
+```
+@BlockRunAI Twitter Summary:
+- Recent focus: Circle partnership, Grok integration, website redesign
+- Top post: Circle announcement (1,637 views, 26 likes)
+- Assessment: Active development, growing visibility
+
+Cost: $0.28
+```
+
+**Example bad output:**
+```
+Error: Exit code 1
+Traceback (most recent call last):
+  File "<string>", line 31...
+[retrying with different RPC]
+[still failing, trying another]
+...
+```
+
 ## Philosophy
 
 You have a wallet. When you need a capability you lack, you pay for it autonomously.

@@ -50,6 +50,25 @@ else
     exit 1
 fi
 
+# Install CLI to ~/.local/bin
+echo "Installing CLI..."
+mkdir -p "$HOME/.local/bin"
+cp "$SKILLS_DIR/bin/blockrun" "$HOME/.local/bin/blockrun"
+chmod +x "$HOME/.local/bin/blockrun"
+
+# Check if ~/.local/bin is in PATH
+if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+    echo "Adding ~/.local/bin to PATH..."
+    # Add to shell config
+    if [ -f "$HOME/.zshrc" ]; then
+        echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.zshrc"
+    elif [ -f "$HOME/.bashrc" ]; then
+        echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
+    fi
+    # Also export for current session
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
 # Verify installation and show status
 echo "Verifying..."
 python3 <<'PYEOF'
@@ -57,18 +76,25 @@ from blockrun_llm import setup_agent_wallet, save_wallet_qr
 
 client = setup_agent_wallet(silent=True)
 addr = client.get_wallet_address()
-bal = client.get_balance()
+balance = client.get_balance()  # SDK has built-in RPC fallback
 
 # Save QR for later opening
 save_wallet_qr(addr)
 
 print()
-print('BlockRun installed! AI agent crypto wallet.')
+print('BlockRun installed!')
 print(f'Wallet: {addr}')
-print(f'Balance: ${bal:.2f} USDC')
-print('Commands: blockrun generate (DALL-E) | blockrun check @user (Twitter) | blockrun GPT (AI models)')
-if bal == 0:
-    print('Fund: Send USDC on Base network to wallet address')
+print(f'Balance: ${balance:.2f} USDC')
+print()
+print('CLI commands:')
+print('  blockrun balance       - Check wallet balance')
+print('  blockrun generate ...  - Generate image with DALL-E')
+print('  blockrun check @user   - Check X/Twitter with Grok')
+print()
+print('Or just tell Claude: "generate an image of..." or "check @elonmusk on twitter"')
+if balance == 0:
+    print()
+    print('Fund wallet: Send USDC on Base to the address above')
 import sys
 sys.stdout.flush()
 PYEOF
